@@ -6,7 +6,7 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 23:53:56 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/25 01:53:46 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/26 23:34:05 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ClapTrap
 		int			max_hp;
 		int			energy_point;
 		int			attack_damage;
+		bool		is_dead;
 	public:
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &clap_trap);

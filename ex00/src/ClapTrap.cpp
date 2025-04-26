@@ -6,7 +6,7 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 23:52:54 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/25 01:58:51 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/26 23:46:05 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ ClapTrap::ClapTrap(std::string name)
 	max_hp = 20;
 	energy_point = 10;
 	attack_damage = 0;
+	is_dead = false;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -55,38 +56,81 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &clap_trap)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (energy_point > 0)
+	if (!is_dead)
 	{
-		energy_point--;
-		std::cout << "ClapTrap " << name
-		<< " attacked " << target
-		<< " causing" << attack_damage
-		<< " point of damage!"
-		<< std::endl;
+		if (energy_point > 0)
+		{
+			energy_point--;
+			std::cout << "ClapTrap " << name
+			<< " attacked " << target
+			<< " causing " << attack_damage
+			<< " point of damage!"
+			<< std::endl;
+		}
+		else
+			std::cout << "ClapTrap " << name
+			<< " cannot attack because of lack of energy"
+			<< std::endl;
 	}
 	else
-		std::cout << "ClapTrap " << name 
-		<< " cannot attack because of lack of energy"
+		std::cout << "ClapTrap " << name
+		<< " is dead and therefor cannot perform any actionm"
 		<< std::endl;
+
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (energy_point > 0)
+	if (!is_dead)
 	{
-		energy_point--;
-		hit_point += amount;
-		if (hit_point > max_hp)
-			hit_point = max_hp;
-		std::cout << "ClapTrap " << name
-		<< " repairs itself, gaigning " << amount
-		<< " hp. He has now " << hit_point
-		<< " pv!"
-		<< std::endl;
+		if (energy_point > 0)
+		{
+			energy_point--;
+			hit_point += amount;
+			if (hit_point > max_hp)
+				hit_point = max_hp;
+			std::cout << "ClapTrap " << name
+			<< " repairs itself, gaigning " << amount
+			<< " hp. He has now " << hit_point
+			<< " pv!"
+			<< std::endl;
+		}
+		else
+			std::cout << "ClapTrap " << name 
+			<< " cannot be repaired because of lack of energy"
+			<< std::endl;
 	}
 	else
-		std::cout << "ClapTrap " << name 
-		<< " cannot be repaired because of lack of energy"
+		std::cout << "ClapTrap " << name
+		<< " is dead and therefor cannot perform any actionm"
+		<< std::endl;
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	if (!is_dead)
+	{
+		hit_point -= amount;
+		if (hit_point <= 0)
+		{
+			hit_point = 0;
+			std::cout << "ClapTrap " << name
+			<< " received " << amount
+			<< " damage. He is dead "
+			<< std::endl;
+		}
+		else
+		{
+			std::cout << "ClapTrap " << name
+			<< " received " << amount
+			<< " damage. He has now " << hit_point
+			<< " pv!"
+			<< std::endl;
+		}
+	}
+	else
+		std::cout << "ClapTrap " << name
+		<< " is dead and therefor cannot perform any actionm"
 		<< std::endl;
 }
 
@@ -97,6 +141,7 @@ void	ClapTrap::displayInfo(void)
 	<< "hit_points: " << hit_point << std::endl
 	<< "max_hp: " << max_hp << std::endl
 	<< "energy: " << energy_point << std::endl
-	<< "attack damage: " << attack_damage << std::endl;
+	<< "attack damage: " << attack_damage << std::endl
+	<< "is_dead: " << is_dead << std::endl;
 }
 
