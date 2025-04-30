@@ -6,26 +6,20 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 23:52:54 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/30 23:29:09 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/30 17:46:05 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap(): name("Default"), hit_point(10), max_hp(20), energy_point(10), attack_damage(0), is_dead(false)
 {
-	std::cout << "Default constructor called" << std::endl;
-	name = "Default name";
-	hit_point = 10;
-	max_hp = 20;
-	energy_point = 10;
-	attack_damage = 0;
-	is_dead = false;
+	std::cout << "Claptrap default constructor called"<<std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "CalpTrap name constructor called" << std::endl;
 	this->name = name;
 	hit_point = 10;
 	max_hp = 20;
@@ -36,12 +30,12 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clap_trap)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	this->name = clap_trap.name;
 	this->attack_damage = clap_trap.attack_damage;
 	this->hit_point= clap_trap.hit_point;
@@ -51,7 +45,7 @@ ClapTrap::ClapTrap(const ClapTrap &clap_trap)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &clap_trap)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap Copy assignment operator called" << std::endl;
 	if (this == &clap_trap)
 	{
 		std::cout << "self assignement..." << std::endl;
@@ -85,9 +79,8 @@ void	ClapTrap::attack(const std::string &target)
 	}
 	else
 		std::cout << "ClapTrap " << name
-		<< " is dead and therefor cannot perform any actionm"
+		<< " is dead and therefore cannot perform any actionm"
 		<< std::endl;
-
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -113,7 +106,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 		std::cout << "ClapTrap " << name
-		<< " is dead and therefor cannot perform any actionm"
+		<< " is dead and therefore cannot perform any actionm"
 		<< std::endl;
 }
 
@@ -142,7 +135,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 		std::cout << "ClapTrap " << name
-		<< " is dead and therefor cannot perform any actionm"
+		<< " is dead and therefore cannot perform any actionm"
 		<< std::endl;
 }
 

@@ -6,69 +6,17 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 01:59:45 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/30 23:42:48 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/30 22:56:10 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-
-void	test_clap_constructors()
-{
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "//TEST CONSTRUCTOR CLAPTRAP//" << std::endl
-				<< "/////////////////////////////" << std::endl;
-	ClapTrap c1;
-	c1.displayInfo();
-	ClapTrap c2(c1);
-	c2.takeDamage(5);
-	c2.displayInfo();
-	c2 = c1;
-	c2.displayInfo();
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "///END TEST                //" << std::endl
-				<< "/////////////////////////////" << std::endl;
-}
-
-void	test_scav_constructors()
-{
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "//TEST CONSTRUCTOR SCAVTRAP//" << std::endl
-				<< "/////////////////////////////" << std::endl;
-	ScavTrap c1;
-	c1.displayInfo();
-	ScavTrap c2(c1);
-	c2.takeDamage(5);
-	c2.displayInfo();
-	c2 = c1;
-	c2.displayInfo();
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "///END TEST                //" << std::endl
-				<< "/////////////////////////////" << std::endl;
-}
-
-void	test_frag_constructors()
-{
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "//TEST CONSTRUCTOR FRAGTRAP//" << std::endl
-				<< "/////////////////////////////" << std::endl;
-	FragTrap c1;
-	c1.displayInfo();
-	FragTrap c2(c1);
-	c2.takeDamage(5);
-	c2.displayInfo();
-	c2 = c1;
-	c2.displayInfo();
-	std::cout	<< "/////////////////////////////" << std::endl
-				<< "///END TEST                //" << std::endl
-				<< "/////////////////////////////" << std::endl;
-}
-
+#include "DiamondTrap.hpp"
 
 void	test_clap_trap(void)
 {
-	test_clap_constructors();
 	ClapTrap test("CLAPCALP");
 	test.displayInfo();
 	test.attack("oui");
@@ -83,7 +31,6 @@ void	test_clap_trap(void)
 
 void	test_scav_trap(void)
 {
-	test_scav_constructors();
 	ScavTrap test2("SCAAAAV");
 	test2.displayInfo();
 	test2.attack("oui");
@@ -100,7 +47,6 @@ void	test_scav_trap(void)
 
 void	test_frag_trap(void)
 {
-	test_frag_constructors();
 	FragTrap test3("Noscope");
 	test3.displayInfo();
 	test3.attack("oui");
@@ -112,6 +58,21 @@ void	test_frag_trap(void)
 	test3.attack("oui");
 	test3.displayInfo();
 	test3.highFivesGuys();
+}
+
+void	test_diamond_trap(void)
+{
+	DiamondTrap test4("Diams (jeune demoiselle recherche un mec mortel)");
+	test4.displayInfo();
+	test4.attack("oui");
+	test4.takeDamage(3);
+	test4.displayInfo();
+	test4.beRepaired(5);
+	test4.displayInfo();
+	test4.takeDamage(32);
+	test4.attack("oui");
+	test4.displayInfo();
+	test4.whoAmI();
 }
 
 void	draw_separation(void)
@@ -127,9 +88,11 @@ void	draw_separation(void)
 
 int	main(void)
 {
-//	test_clap_trap();
-//	draw_separation();
-//	test_scav_trap();
-//	draw_separation();
+	test_clap_trap();
+	draw_separation();
+	test_scav_trap();
+	draw_separation();
 	test_frag_trap();
+	draw_separation();
+	test_diamond_trap();
 }
