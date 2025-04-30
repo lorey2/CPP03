@@ -6,7 +6,7 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:13:23 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/30 17:46:36 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/04/30 18:02:03 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,30 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate()
 {
-	if (gate_mode)
+	if (!is_dead)
 	{
-		std::cout << "ScavTrap stopped guarding the gate" << std::endl;
-		gate_mode = false;
+		if (energy_point > 0)
+		{
+			energy_point--;
+			if (gate_mode)
+			{
+				std::cout << "ScavTrap stopped guarding the gate" << std::endl;
+				gate_mode = false;
+			}
+			else
+			{
+				std::cout << "ScavTrap is now in Gatekeeper mode" << std::endl;
+					gate_mode = true;
+			}
+		}
+		else
+			std::cout << "ScavTrap " << name
+			<< " cannot attack because of lack of energy"
+			<< std::endl;
 	}
 	else
-	{
-		std::cout << "ScavTrap is now in Gatekeeper mode" << std::endl;
-		gate_mode = true;
-	}
+		std::cout << "ScavTrap " << name
+		<< " is dead and therefore cannot perform any actionm"
+		<< std::endl;
+
 }
