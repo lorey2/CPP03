@@ -6,7 +6,7 @@
 /*   By: lorey <lorey@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 01:59:45 by lorey             #+#    #+#             */
-/*   Updated: 2025/04/30 23:42:48 by lorey            ###   LAUSANNE.ch       */
+/*   Updated: 2025/05/02 14:29:32 by lorey            ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	test_clap_constructors()
 {
-	std::cout	<< "/////////////////////////////" << std::endl
+	std::cout	<< "\033[33m/////////////////////////////" << std::endl
 				<< "//TEST CONSTRUCTOR CLAPTRAP//" << std::endl
 				<< "/////////////////////////////" << std::endl;
 	ClapTrap c1;
@@ -33,7 +33,7 @@ void	test_clap_constructors()
 
 void	test_scav_constructors()
 {
-	std::cout	<< "/////////////////////////////" << std::endl
+	std::cout	<< "\033[33m/////////////////////////////" << std::endl
 				<< "//TEST CONSTRUCTOR SCAVTRAP//" << std::endl
 				<< "/////////////////////////////" << std::endl;
 	ScavTrap c1;
@@ -50,7 +50,7 @@ void	test_scav_constructors()
 
 void	test_frag_constructors()
 {
-	std::cout	<< "/////////////////////////////" << std::endl
+	std::cout	<< "\033[33m/////////////////////////////" << std::endl
 				<< "//TEST CONSTRUCTOR FRAGTRAP//" << std::endl
 				<< "/////////////////////////////" << std::endl;
 	FragTrap c1;
@@ -69,6 +69,9 @@ void	test_frag_constructors()
 void	test_clap_trap(void)
 {
 	test_clap_constructors();
+	std::cout	<< "\033[1;31m\n\n??????????????????"	<< std::endl
+				<< "?OTHER CLAP TESTS?"		<< std::endl
+				<< "??????????????????\n\033[32m\n"	<< std::endl;
 	ClapTrap test("CLAPCALP");
 	test.displayInfo();
 	test.attack("oui");
@@ -84,6 +87,9 @@ void	test_clap_trap(void)
 void	test_scav_trap(void)
 {
 	test_scav_constructors();
+	std::cout	<< "\033[1;31m\n\n??????????????????"	<< std::endl
+				<< "?OTHER SCAV TESTS?"		<< std::endl
+				<< "??????????????????\n\033[32m\n"	<< std::endl;
 	ScavTrap test2("SCAAAAV");
 	test2.displayInfo();
 	test2.attack("oui");
@@ -101,6 +107,9 @@ void	test_scav_trap(void)
 void	test_frag_trap(void)
 {
 	test_frag_constructors();
+	std::cout	<< "\033[1;31m\n\n??????????????????"	<< std::endl
+				<< "?OTHER FRAG TESTS?"		<< std::endl
+				<< "??????????????????\n\033[32m\n"	<< std::endl;
 	FragTrap test3("Noscope");
 	test3.displayInfo();
 	test3.attack("oui");
@@ -117,7 +126,9 @@ void	test_frag_trap(void)
 void	draw_separation(void)
 {
 	std::cout	<< "\n\n"
-				<< "//////////////////////////////"
+				<< "\033[37m-=-=-=-=-=-=-=-=-=-"	<< std::endl
+				<< "-=TEST  SEPARATOR=-"			<< std::endl
+				<< "-=-=-=-=-=-=-=-=-=-"
 				<< "\n\n"
 				<<std::endl;
 }
@@ -127,9 +138,9 @@ void	draw_separation(void)
 
 int	main(void)
 {
-//	test_clap_trap();
-//	draw_separation();
-//	test_scav_trap();
-//	draw_separation();
+	test_clap_trap();
+	draw_separation();
+	test_scav_trap();
+	draw_separation();
 	test_frag_trap();
 }
